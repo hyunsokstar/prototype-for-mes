@@ -8,7 +8,8 @@ const Home = () => {
         alert("테스트 버튼 클릭");
         const data = {name:"hyun"};
         const result = await axios.post('http://localhost:3065/post', data);  
-        console.log("resullt : ", result.data.message);
+        console.log("columns : ", result.data.columns);
+        console.log("rows : ", result.data.rows);
     }
 
     return (
