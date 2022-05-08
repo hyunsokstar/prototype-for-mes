@@ -4,17 +4,17 @@ const router = express.Router();
 const columns = [
     { key: 'id', name: 'ID' },
     { key: 'name', name: '성명' },
-    { key: 'postion', name: '직책' },
+    { key: 'position', name: '직책' },
     { key: 'telephone', name: '전화번호' },
     { key: 'email', name: '이메일' },
 ];
 
 const rows = [
-    { id: 0, name: 'Example', position: "manager", telephone: "010-4903-8050", email: "terecal@daum.net" },
-    { id: 1, name: 'hyun', position: "manager", telephone: "010-4903-8050", email: "terecal@daum.net" },
-    { id: 2, name: '회장', position: "manager", telephone: "010-4903-8050", email: "terecal@daum.net" },
-    { id: 3, name: '01049038056', position: "manager", telephone: "010-4903-8050", email: "terecal@daum.net" },
-    { id: 4, name: 'terecal@daum.net', position: "manager", telephone: "010-4903-8050", email: "terecal@daum.net" },
+    { id: 0, name: 'hyun1', position: "사원", telephone: "010-4903-8051", email: "terecal@daum.net" },
+    { id: 1, name: 'hyun2', position: "대리", telephone: "010-4903-8052", email: "terecal@daum.net" },
+    { id: 2, name: 'hyun3', position: "부장", telephone: "010-4903-8053", email: "terecal@daum.net" },
+    { id: 3, name: 'hyun4', position: "회장", telephone: "010-4903-8054", email: "terecal@daum.net" },
+    { id: 4, name: 'hyun5', position: "cto", telephone: "010-4903-8056", email: "terecal@daum.net" },
 ];
 
 
