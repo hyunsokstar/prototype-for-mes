@@ -1,7 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
     const Post = sequelize.define('Post', {
         // id가 기본적으로 들어있다.
-        content: {
+        name: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        position: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        telephone: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        job: {
             type: DataTypes.TEXT,
             allowNull: false,
         },

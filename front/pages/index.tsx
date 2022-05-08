@@ -2,21 +2,30 @@ import React, { useState } from "react";
 import GridTable from "../components/GridTable";
 import axios from "axios";
 
+const defaultColumns = [
+  { key: 'id', name: 'ID' },
+  { key: 'name', name: '성명' },
+  { key: 'position', name: '직책' },
+  { key: 'telephone', name: '전화번호' },
+  { key: 'job', name: '직업' },
+];
 
 
 const Home = () => {
-    const [columns, setColumns] = useState([]);
+    const [columns, setColumns] = useState(defaultColumns);
     const [rows, setRows] = useState([]);
 
     const testAxios = async () => {
-        alert("테스트 버튼 클릭");
         const data = { name: "hyun" };
         const result = await axios.post('http://localhost:3065/post', data);
-        console.log("columns : ", result.data.columns);
-        console.log("rows : ", result.data.rows);
+        console.log("result : ", result);
 
-        setColumns(result.data.columns);
-        setRows(result.data.rows);
+        if (result.data.length > 0) {
+            console.log("result.data.length : ", result.data.length);
+            setRows(result.data);
+        } else {
+            alert("result is empty : " + result)
+        }    
     }
 
     return (
@@ -25,10 +34,9 @@ const Home = () => {
                 test button
             </button>
             <div>Hello, Next!</div>
-            <GridTable columns={columns} rows = {rows}/>
+            <GridTable columns={columns} rows={rows} />
         </>
     );
 };
 
 export default Home;
-

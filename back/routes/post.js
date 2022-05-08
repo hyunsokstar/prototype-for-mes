@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const { Post } = require('../models');
+
 
 const columns = [
     { key: 'id', name: 'ID' },
@@ -23,8 +25,22 @@ const rows = [
 // });
 router.post("/", async (req, res) => {
     console.log("req.body.name : ", req.body.name);
-    // res.status(200).json({message:"login success"})
-    res.status(200).json({ columns, rows })
-})
+
+    try {
+        const where = {};
+        const posts = await Post.findAll({
+            // where,
+            limit: 10,
+        });
+        console.log(posts);
+
+        res.status(200).json(posts);
+
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+});
+
 
 module.exports = router;

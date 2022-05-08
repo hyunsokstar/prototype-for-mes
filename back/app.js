@@ -5,7 +5,8 @@ const postRouter = require('./routes/post');
 const db = require('./models');
 const cors = require('cors');
 
-db.sequelize.sync()
+
+db.sequelize.sync({ force: true })
     .then(() => {
         console.log("db 연결 성공");
     })
