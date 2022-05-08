@@ -3,11 +3,11 @@ import GridTable from "../components/GridTable";
 import axios from "axios";
 
 const defaultColumns = [
-    { key: 'id', name: 'ID' },
-    { key: 'name', name: '성명' },
-    { key: 'position', name: '직책' },
-    { key: 'telephone', name: '전화번호' },
-    { key: 'job', name: '직업' },
+    { key: 'id', name: 'ID' , editable: true},
+    { key: 'name', name: '성명' , editable: true},
+    { key: 'position', name: '직책' , editable: true},
+    { key: 'telephone', name: '전화번호' , editable: true},
+    { key: 'job', name: '직업' ,editable: true},
 ];
 
 
@@ -56,7 +56,7 @@ const Home = () => {
                 test button
             </button>
             <div>Hello, Next!</div>
-            <GridTable columns={columns} rows={rows} />
+            <GridTable columns={columns} rows={rows}/>
         </>
     );
 };

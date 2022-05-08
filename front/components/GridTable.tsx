@@ -7,13 +7,13 @@ interface IProps {
   rows: Array<any>
 }
 
-const columns = [
-  { key: 'id', name: 'ID' },
-  { key: 'name', name: '성명' },
-  { key: 'postion', name: '직책' },
-  { key: 'telephone', name: '전화번호' },
-  { key: 'email', name: '이메일' },
-];
+// const columns = [
+//   { key: 'id', name: 'ID' },
+//   { key: 'name', name: '성명' },
+//   { key: 'postion', name: '직책' },
+//   { key: 'telephone', name: '전화번호' },
+//   { key: 'email', name: '이메일' },
+// ];
 
 // const rows = [
 //   { id: 0, name: 'Example', position: "manager", telephone: "010-4903-8050", email: "terecal@daum.net" },
@@ -42,7 +42,11 @@ function GridTable({ columns, rows }: IProps) {
     <>
       hi
       {/* <DataGrid columns={columns} rows={rows} /> */}
-      <DataGridTable columns={columns} rows={rows} />
+      <DataGridTable 
+        columns={columns} 
+        rows={rows}
+        enableCellSelect={true}
+      />
 
 
 
