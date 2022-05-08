@@ -15,7 +15,6 @@ const Home = () => {
     const [columns, setColumns] = useState(defaultColumns);
     const [rows, setRows] = useState([]);
 
-
     const getListForPostModel = async () => {
         const result = await axios.post('http://localhost:3065/post');
         console.log("result : ", result);
@@ -27,7 +26,6 @@ const Home = () => {
         } else {
             alert("result is empty : " + result)
         }
-
     }
 
     useEffect(() => {
