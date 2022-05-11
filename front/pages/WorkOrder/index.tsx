@@ -1,8 +1,6 @@
+
 import React, { useState } from 'react'
-import DataGrid from 'react-data-grid';
 import GridTable from "../../components/GridTable"
-// import { css } from '@linaria/core';
-// export const textEditorClassname = `rdg-text-editor ${textEditor}`;
 
 function hyun_test(e: any) {
   console.log("e : ", e.target.value);
@@ -30,11 +28,6 @@ const rows = [
   { id: 0, title: 'Example2' },
   { id: 1, title: 'Demo' }
 ];
-
-// export interface SortColumn {
-//   readonly columnKey: string;
-//   readonly direction: SortDirection;
-// }
 
 function App() {
   const [basicRows, setBasicRows] = useState(rows);
