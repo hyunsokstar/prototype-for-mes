@@ -16,7 +16,7 @@ function TextEditor({
 }: any) {
   return (
     <input
-      onChange={onRowChange({ ...row, isChange: true })}
+      onChange={() => onRowChange({ ...row, isChange: true })}
     />
   );
 }
