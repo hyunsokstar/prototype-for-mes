@@ -83,7 +83,13 @@ function App() {
         // setRow={(e) => {
         //   console.log("테이블 정보 : ", e);
         // }}
-        setRow={(event:any) => {
+        setRow={(e:[]) => {
+
+          console.log("basicRows : ", basicRows);
+          
+
+          console.log("e : ", e);
+          setBasicRows({...basicRows, ...e})
 
         }}
         columns={columns}
