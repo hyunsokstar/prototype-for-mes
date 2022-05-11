@@ -19,7 +19,6 @@ const rows = [
     { id: 4, name: 'hyun5', position: "cto", telephone: "010-4903-8056", email: "terecal@daum.net" },
 ];
 
-
 // router.get('/', (req, res) => {
 //     res.send("/post/ test");
 // });

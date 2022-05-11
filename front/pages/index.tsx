@@ -10,7 +10,6 @@ const defaultColumns = [
     { key: 'job', name: '직업' ,editable: true},
 ];
 
-
 const Home = () => {
     const [columns, setColumns] = useState(defaultColumns);
     const [rows, setRows] = useState([]);
@@ -54,7 +53,7 @@ const Home = () => {
                 test button
             </button>
             <div>Hello, Next!</div>
-            <GridTable columns={columns} rows={rows}/>
+            <GridTable columns={columns} rows={rows} />
         </>
     );
 };
