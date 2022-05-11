@@ -50,12 +50,9 @@ function App() {
         //   console.log("테이블 정보 : ", e);
         // }}
         setRow={(e:[]) => {
-
           console.log("basicRows : ", basicRows);
-          
-
           console.log("e : ", e);
-          setBasicRows({...basicRows, ...e})
+          setBasicRows([...e])
 
         }}
         columns={columns}
