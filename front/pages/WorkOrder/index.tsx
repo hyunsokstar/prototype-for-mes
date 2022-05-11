@@ -6,6 +6,40 @@ function hyun_test(e: any) {
   console.log("e : ", e.target.value);
 }
 
+
+// onChange={(event) => {
+//   let eventValue = event.target.value
+//   if(isNumberInput){
+//     if(checkIfNegative(event.target.value)){
+//       Notiflix.Report.warning('경고', '음수일 수 없습니다.', '확인')
+//       return
+//     }
+//     eventValue= RemoveFirstZero(event.target.value)
+//   }
+//   if(column.key === 'mold_name') {
+//     onRowChange({
+//       ...row,
+//       [column.key]: eventValue,
+//       wip_name: eventValue ? eventValue+'-1' : undefined,
+//       isChange: true
+//     })
+//   }else if(column.key === "goal"){
+//     onRowChange({ ...row, [column.key]: eventValue, isChange: true })
+//     if(selector.selectRow === 1){
+//       selector.machineList.map((v,i)=>{
+//         if(i !== 0){
+//           v.goal = Number(eventValue)
+//         }
+//       })
+//     }else{
+//       selector.machineList[selector.selectRow].goal = Number(eventValue);
+//     }
+//     dispatch(insert_machine_list({...selector}))
+//   }else{
+//     onRowChange({ ...row, [column.key]: eventValue, isChange: true })
+//   }
+// }}
+
 function TextEditor({
   row,
   column,
@@ -14,7 +48,11 @@ function TextEditor({
 }: any) {
   return (
     <input
-      onChange={() => onRowChange({ ...row, isChange: true })}
+    style={{textAlign: 'center',  border:"none" }}
+      onChange={(event) => {
+        let eventValue = event.target.value
+        onRowChange({ ...row, [column.key]: eventValue, isChange: true })
+      }}
     />
   );
 }
@@ -45,7 +83,9 @@ function App() {
         // setRow={(e) => {
         //   console.log("테이블 정보 : ", e);
         // }}
-        setRow={e => console.log("e :", e)}
+        setRow={(event:any) => {
+
+        }}
         columns={columns}
         rows={basicRows}
       />
