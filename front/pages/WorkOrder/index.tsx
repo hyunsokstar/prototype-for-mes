@@ -16,9 +16,7 @@ function TextEditor({
 }: any) {
   return (
     <input
-    // onChange={(event) => onRowChange({ ...row, [column.key]: event.target.value })}
-    // onChange={(event) => hyun_test(event)}
-    // onBlur={() => onClose(true)}
+      onChange={onRowChange({ ...row, isChange: true })}
     />
   );
 }
@@ -51,11 +49,12 @@ function App() {
     <div>
       <h2>hyun table</h2>
       <GridTable
-        setRow={(e) => {
-          console.log("입력한 값 : ", e);
-        }}
+        // setRow={(e) => {
+        //   console.log("테이블 정보 : ", e);
+        // }}
+        setRow={e => console.log("e :", e)}
         columns={columns}
-        rows={basicRows}        
+        rows={basicRows}
       />
     </div>
 

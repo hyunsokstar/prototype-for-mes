@@ -6,7 +6,7 @@ const db = require('./models');
 const cors = require('cors');
 
 
-db.sequelize.sync({ force: true })
+db.sequelize.sync({ force: false })
     .then(() => {
         console.log("db 연결 성공");
     })
