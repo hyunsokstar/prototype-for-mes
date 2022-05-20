@@ -5,7 +5,7 @@ import styled from "styled-components";
 interface IProps {
   columns: Array<any>
   rows: Array<any>
-  setRow: (row: Array<any>) => void
+  setRow: (row: (state) => { rows: any }) => void
 }
 
 const DataGridTable = styled(DataGrid)`
@@ -17,6 +17,16 @@ const DataGridTable = styled(DataGrid)`
 function GridTable({ columns, rows, setRow }: IProps) {
   console.log("Grid Table 출력 확인!!");
 
+  const  onGridRowsUpdated = ({ fromRow, toRow, updated }: any) => {
+        setRow(state => {
+            const rows = state.rows.slice();
+            for (let i = fromRow; i <= toRow; i++) {
+                rows[i] = { ...rows[i], ...updated };
+            }
+            return { rows };
+        });
+    };
+
   return (
     <>
       hi
@@ -26,6 +36,8 @@ function GridTable({ columns, rows, setRow }: IProps) {
         columns={columns}
         rows={rows}
         enableCellSelect={true}
+        // rowGetter={i => rows[i]}
+
       />
 
     </>

@@ -33,7 +33,7 @@ const rows = [
   { id: 1, title: 'Demo' }
 ];
 
-function App() {
+function WorkOrder() {
   const [basicRows, setBasicRows] = useState(rows);
   const [sortColumns, setSortColumns] = useState<any[]>([]);
   const [selectedRows, setSelectedRows] = useState<ReadonlySet<number>>(() => new Set());
@@ -64,4 +64,4 @@ function App() {
 
 }
 
-export default App;
+export default WorkOrder;
