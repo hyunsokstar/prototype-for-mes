@@ -22,7 +22,29 @@ const rows = [
 // router.get('/', (req, res) => {
 //     res.send("/post/ test");
 // });
+
 router.post("/", async (req, res) => {
+    console.log("req.body : ", req.body);
+
+    try {
+        console.log("저장 요청 받음");
+        // const where = {};
+        // const posts = await Post.findAll({
+        //     // where,
+        //     limit: 10,
+        // });
+        // console.log(posts);
+
+        // res.status(200).json(posts);
+        res.status(200).json({"success" : "hi"})            
+
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+});
+
+router.get("/", async (req, res) => {
     console.log("req.body.name : ", req.body.name);
 
     try {
