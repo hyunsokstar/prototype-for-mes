@@ -28,12 +28,18 @@ router.post("/", async (req, res) => {
 
     try {
         console.log("저장 요청 받음");
-        // const where = {};
-        // const posts = await Post.findAll({
-        //     // where,
-        //     limit: 10,
-        // });
-        // console.log(posts);
+
+        const saveData = req.body;
+
+        for (var i = 0; i < saveData.length; i++) {
+            // document.write(i + "<br>");
+            const post = await Post.create({
+                name: saveData[i].name,
+                position: saveData[i].position,
+                telephone: saveData[i].telephone,
+                job: saveData[i].job
+            });
+        }
 
         // res.status(200).json(posts);
         res.status(200).json({"success" : "hi"})            
