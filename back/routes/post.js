@@ -41,8 +41,13 @@ router.post("/", async (req, res) => {
             });
         }
 
+        const posts = await Post.findAll({
+            // where,
+            limit: 10,
+        });
+
         // res.status(200).json(posts);
-        res.status(200).json({"success" : "hi"})            
+        res.status(200).json(posts)
 
     } catch (error) {
         console.error(error);
