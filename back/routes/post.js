@@ -57,7 +57,6 @@ router.post("/", async (req, res, next) => {
 
   try {
     console.log("저장 요청 받음");
-
     const saveData = req.body;
 
     for (var i = 0; i < saveData.length; i++) {
@@ -66,30 +65,39 @@ router.post("/", async (req, res, next) => {
 
       if (!saveData[i]) {
         console.log("empty !!");
-        console.log("saveData : ", saveData[i]);
+        // console.log("saveData : ", saveData[i]);
       } else {
-        console.log("update !!!!!!");
-        console.log("saveData : ", saveData[i]);
-        const result = Post.update(
-          {
-            name: saveData[i].name,
-            position: saveData[i].position,
-            telephone: saveData[i].telephone,
-            job: saveData[i].job,
-          },
-          { where: { id: saveData[i].id } }
-        );
+        const row_exist = await Post.findOne({ where: { id: saveData[i].id } }).count;
+
+        // console.log("row_exist : ", row_exist);
+        // console.log("saveData : ", saveData[i]);
+
+        if (row_exist) {
+          console.log("update !!!!!!");
+          const result = Post.update(
+            {
+              name: saveData[i].name,
+              position: saveData[i].position,
+              telephone: saveData[i].telephone,
+              job: saveData[i].job,
+            },
+            { where: { id: saveData[i].id } }
+          );
+        } else {
+          console.log("create !!");
+          const post = await Post.create({
+            name: saveData[i].name ?? "",
+            position: saveData[i].position ?? "manager",
+            telephone: saveData[i].telephone ?? "010",
+            job: saveData[i].job ?? "",
+          });
+        }
       }
-      //   const post = await Post.create({
-      //     name: saveData[i].name,
-      //     position: saveData[i].position,
-      //     telephone: saveData[i].telephone,
-      //     job: saveData[i].job,
-      //   });
     }
 
     const posts = await Post.findAll({
       limit: 10,
+      order: [['id', 'DESC']]
     });
 
     res.status(200).json(posts);
@@ -107,6 +115,7 @@ router.get("/", async (req, res) => {
     const posts = await Post.findAll({
       // where,
       limit: 10,
+      order: [['id', 'DESC']]
     });
     console.log(posts);
 
