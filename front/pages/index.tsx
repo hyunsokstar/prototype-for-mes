@@ -17,10 +17,10 @@ function TextEditor({ row, column, onRowChange, onClose }: any) {
 }
 
 const defaultColumns = [
-  { key: "id", name: "ID", editable: true },
-  { key: "name", name: "성명", editable: true },
-  { key: "position", name: "직책", editable: true },
-  { key: "telephone", name: "전화번호", editable: true },
+  { key: "id", name: "ID", editable: true ,editor: TextEditor },
+  { key: "name", name: "성명", editable: true ,editor: TextEditor},
+  { key: "position", name: "직책", editable: true ,editor: TextEditor},
+  { key: "telephone", name: "전화번호", editable: true ,editor: TextEditor},
   { key: "job", name: "직업", editor: TextEditor, editable: true },
 ];
 
@@ -66,11 +66,11 @@ const Home = () => {
 
   const getListForPostModel = async () => {
     const result = await axios.get("http://localhost:3065/post");
-    console.log("result : ", result);
-    console.log("result : ", result.data.length);
+    // console.log("result : ", result);
+    // console.log("result : ", result.data.length);
 
     if (result.data.length > 0) {
-      console.log("result.data.length : ", result.data.length);
+      // console.log("result.data.length : ", result.data.length);
       setRows(result.data);
     } else {
       alert("result is empty : " + result);
@@ -101,6 +101,23 @@ const Home = () => {
     setRows(rows);
   };
 
+  const addRow = () => {
+    const random_id = Math.random() * 1000;
+
+    let items = {};
+    setRows([
+      {
+        ...items,
+        id: random_id,
+        name: null,
+        position: "",
+        handphone:"",
+        job:""
+      },
+      ...rows,
+    ]);
+  }
+
   return (
     <>
       메인 페이지
@@ -112,7 +129,10 @@ const Home = () => {
           justifyContent: "flex-end",
         }}
       >
+        <button onClick={addRow}>행 추가</button>
         <button onClick={saveHandler}>저장 하기</button>
+
+
       </div>
       <div>Hello, Next!</div>
       <GridTable
