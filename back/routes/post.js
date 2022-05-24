@@ -65,15 +65,15 @@ router.post("/", async (req, res, next) => {
 
       if (!saveData[i]) {
         console.log("empty !!");
+        console.log("saveData[i].id : ", saveData[i]);
         // console.log("saveData : ", saveData[i]);
       } else {
-        const row_exist = await Post.findOne({ where: { id: saveData[i].id } })
-          .count;
+        const post_result = await Post.count({ where: { id: saveData[i].id } });
 
-        // console.log("row_exist : ", row_exist);
+        console.log("post_result : ", post_result);
         // console.log("saveData : ", saveData[i]);
 
-        if (row_exist) {
+        if (post_result > 0) {
           console.log("update !!!!!!");
           const result = Post.update(
             {
