@@ -17,10 +17,10 @@ function TextEditor({ row, column, onRowChange, onClose }: any) {
 }
 
 const defaultColumns = [
-  { key: "id", name: "ID", editable: true ,editor: TextEditor },
-  { key: "name", name: "성명", editable: true ,editor: TextEditor},
-  { key: "position", name: "직책", editable: true ,editor: TextEditor},
-  { key: "telephone", name: "전화번호", editable: true ,editor: TextEditor},
+  { key: "id", name: "ID", editable: true, editor: TextEditor },
+  { key: "name", name: "성명", editable: true, editor: TextEditor },
+  { key: "position", name: "직책", editable: true, editor: TextEditor },
+  { key: "telephone", name: "전화번호", editable: true, editor: TextEditor },
   { key: "job", name: "직업", editor: TextEditor, editable: true },
 ];
 
@@ -111,12 +111,39 @@ const Home = () => {
         id: random_id,
         name: null,
         position: "",
-        handphone:"",
-        job:""
+        handphone: "",
+        job: "",
       },
       ...rows,
     ]);
-  }
+  };
+
+  const deleteHandler = async () => {
+    const delete_ids = selectList;
+    alert("delete_ids : " + delete_ids);
+    let delete_ids_array = [];
+
+    // delete_ids.map((id)=> {
+    //   console.log("id : ", id);
+    // })
+
+    for (let id of delete_ids) {
+      console.log("id : ", id);
+      delete_ids_array.push(id);
+    }
+
+
+    const result = await axios.delete("http://localhost:3065/post", {
+      data: {
+        deleteIds: delete_ids_array,
+      },
+    });
+
+    setRows(result.data.posts)
+
+    console.log("result.data.messge : ", result.data.message);
+    alert("result.data.message : "+ result.data.message)
+  };
 
   return (
     <>
@@ -124,15 +151,15 @@ const Home = () => {
       <br />
       <div
         style={{
-          border: "1px solid green",
+          // border: "1px solid green",
           display: "flex",
           justifyContent: "flex-end",
+          gap: "10px",
         }}
       >
         <button onClick={addRow}>행 추가</button>
         <button onClick={saveHandler}>저장 하기</button>
-
-
+        <button onClick={deleteHandler}>삭제 하기</button>
       </div>
       <div>Hello, Next!</div>
       <GridTable
@@ -156,7 +183,7 @@ const Home = () => {
             if (v.isChange) tmp.add(v.id);
           });
           setSelectList(tmp);
-          competeId(e)
+          competeId(e);
         }}
       />
     </>

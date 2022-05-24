@@ -53,7 +53,7 @@ const rows = [
 // });
 
 router.post("/", async (req, res, next) => {
-  console.log("req.body : ", req.body);
+  // console.log("req.body : ", req.body);
 
   try {
     console.log("저장 요청 받음");
@@ -67,7 +67,8 @@ router.post("/", async (req, res, next) => {
         console.log("empty !!");
         // console.log("saveData : ", saveData[i]);
       } else {
-        const row_exist = await Post.findOne({ where: { id: saveData[i].id } }).count;
+        const row_exist = await Post.findOne({ where: { id: saveData[i].id } })
+          .count;
 
         // console.log("row_exist : ", row_exist);
         // console.log("saveData : ", saveData[i]);
@@ -97,7 +98,7 @@ router.post("/", async (req, res, next) => {
 
     const posts = await Post.findAll({
       limit: 10,
-      order: [['id', 'DESC']]
+      order: [["id", "DESC"]],
     });
 
     res.status(200).json(posts);
@@ -115,15 +116,31 @@ router.get("/", async (req, res) => {
     const posts = await Post.findAll({
       // where,
       limit: 10,
-      order: [['id', 'DESC']]
+      order: [["id", "DESC"]],
     });
-    console.log(posts);
+    // console.log(posts);
 
     res.status(200).json(posts);
   } catch (error) {
     console.error(error);
     next(error);
   }
+});
+
+router.delete("/", async (req, res) => {
+  console.log("req.body : ", req.body);
+  const count = await Post.destroy({ where: { id: req.body.deleteIds } });
+  console.log(`deleted row(s): ${count}`);
+
+  const posts = await Post.findAll({
+    limit: 10,
+    order: [["id", "DESC"]],
+  });
+
+  res
+    .status(200)
+    .json({ posts: posts, message: `delte  ${count} row success !!` });
+  // res.status(200).json({message : `delte  ${count} row success !!`})
 });
 
 module.exports = router;
