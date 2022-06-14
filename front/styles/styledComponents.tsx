@@ -189,7 +189,7 @@ export const MenuNavItem = styled.div`
 
 export const MenuText = styled.p`
   margin: 0;
-  color: white;
+  color: black;
   font-size: 12px;
 `
 

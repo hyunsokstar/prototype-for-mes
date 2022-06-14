@@ -5,7 +5,7 @@ import MenuNavigation from '../../../component/MenuNav/MenuNavigation'
 function DashBoard() {
   return (
     <div>
-        <MenuNavigation />
+      <MenuNavigation pageType={'HOME'} />
     </div>
   )
 }
