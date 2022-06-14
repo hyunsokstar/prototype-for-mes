@@ -108,11 +108,21 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  console.log("req.body.name : ", req.body.name);
+// router.get("/", async (req, res) => {
+router.get("/:pageNum/:pageLimitRow", async (req, res) => {
 
+  console.log("req.params.pageNum : ", req.params.pageNum);
+  console.log("req.params.pageLimitRow : ", req.params.pageLimitRow);
+
+  const pageNum = req.params.pageNum;
+  const pageLimitRow = req.params.pageLimitRow;
+  
   try {
     const where = {};
+
+    console.log("pageNum : ", pageNum);
+    console.log("pageLimitRow : ", pageLimitRow);
+
     const posts = await Post.findAll({
       // where,
       limit: 10,
@@ -123,7 +133,7 @@ router.get("/", async (req, res) => {
     res.status(200).json(posts);
   } catch (error) {
     console.error(error);
-    next(error);
+    // next(error);
   }
 });
 
