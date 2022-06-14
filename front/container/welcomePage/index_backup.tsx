@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import GridTable from "../components/GridTable";
+import DGTable from "../../components/DGTable";
 import axios from "axios";
 import { SelectColumn } from "react-data-grid";
 import { PlaceholderBox } from "../components/Formatter/PlaceholderBox";
@@ -29,7 +29,7 @@ const defaultColumns = [
   { key: "job", name: "직업", editable: true , editor: TextEditor ,  },
 ];
 
-const Home = () => {
+const WelcomePage = () => {
   const [rows, setRows] = useState([]);
   const [selectList, setSelectList] = useState<Set<any>>(new Set());
   const [columns, setColumns] = useState(defaultColumns);
@@ -164,7 +164,7 @@ const Home = () => {
 
   return (
     <>
-      메인 페이지 12
+      {/* 메인 페이지 12
       <br />
       <div
         style={{
@@ -179,7 +179,7 @@ const Home = () => {
         <button onClick={deleteHandler}>삭제 하기</button>
       </div>
       <div>Hello, Next!</div>
-      <GridTable
+      <DGTable
         editable
         resizable
         rows={rows}
@@ -202,9 +202,13 @@ const Home = () => {
           setSelectList(tmp);
           competeId(e);
         }}
-      />
+      /> */}
+
+
+      <button>로그인</button>
+
     </>
   );
 };
 
-export default Home;
+export default WelcomePage;
