@@ -1,5 +1,5 @@
 import React from 'react'
-import MenuNavigation from '../../../../../component/MenuNav/MenuNavigation'
+import MenuNavigation from '../../../component/MenuNav/MenuNavigation'
 
 
 function DashBoard() {
