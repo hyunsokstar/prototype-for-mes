@@ -1,5 +1,5 @@
 import React from 'react'
-import WelcomePage from '../container/welcomePage'
+import WelcomePage from '../../../container/welcomePage'
 
 function index() {
   return (

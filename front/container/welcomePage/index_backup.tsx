@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DGTable from "../../components/DGTable";
+import DGTable from "../../component/DGTable";
 import axios from "axios";
 import { SelectColumn } from "react-data-grid";
 import { PlaceholderBox } from "../components/Formatter/PlaceholderBox";
@@ -184,7 +184,7 @@ const WelcomePage = () => {
         resizable
         rows={rows}
         headerList={[SelectColumn, ...columns]}
-        selectList={selectList}
+        selectList={selectList}zw
         //@ts-ignore
         setSelectList={(e) => {
           console.log("Asdsad : ", e);

@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import GridTable from "../../components/GridTable"
+import GridTable from "../../component/GridTable"
 
 function hyun_test(e: any) {
   console.log("e : ", e.target.value);
