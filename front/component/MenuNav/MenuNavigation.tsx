@@ -27,12 +27,12 @@ function MenuNavigation({ pageType, subType }: IProps) {
                     <MenuNavItem style={{ backgroundColor: menuType === "HOME" ? "skyblue" : undefined }} onClick={() => {
                         changeMenuType("HOME")
                     }}>
-                        <MenuText>HOME</MenuText>
+                        <MenuText>HOME2</MenuText>
                     </MenuNavItem>
                     <MenuNavItem style={{ backgroundColor: menuType === "BASIC" ? "skyblue" : undefined }} onClick={() => {
                         changeMenuType("BASIC")
                     }}>
-                        <MenuText>기준정보관리</MenuText>
+                        <MenuText>기준정보관리2</MenuText>
                     </MenuNavItem>
                     <MenuNavItem style={{ backgroundColor: menuType === "MES" ? "skyblue" : undefined }} onClick={() => {
                         changeMenuType("MES")
