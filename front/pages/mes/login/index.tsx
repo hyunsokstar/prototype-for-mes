@@ -16,6 +16,9 @@ function Login() {
         console.log("password : ", password);
         
         const result = await axios.patch("http://localhost:3065/users/login", { username, password });
+
+        console.log("result : ", result);
+        
         
       };
 
