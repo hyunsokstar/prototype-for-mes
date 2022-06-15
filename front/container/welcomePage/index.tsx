@@ -14,7 +14,7 @@ function WelcomePage() {
   return (
     <div>
       <button onClick={() => {
-        router.push('/mes/dashboard')
+        router.push('/mes/login')
       }} >로그인</button>
     </div>
   )

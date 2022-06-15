@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 // 라우터 임포트
 const postRouter = require('./routes/post');
+const userRouter = require('./routes/user');
 const db = require('./models');
 const cors = require('cors');
 
@@ -26,6 +27,8 @@ app.get('/', (req, res) => {
 3010
 // 라우터 로직 분기
 app.use('/post', postRouter);
+app.use('/users', userRouter)
+
 
 app.listen(3065, () => {
     console.log("Ecpress Server is Excuting");
