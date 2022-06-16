@@ -2,14 +2,17 @@
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 // const redisClient = require('./redis');
-const secret = process.env.SECRET;
+// const secret = process.env.SECRET;
+const secret = "1234";
 
 
 module.exports = {
   sign: (user) => { // access token 발급
+    // console.log("user : ", user);
+
     const payload = { // access token에 들어갈 payload
-      id: user.id,
-      role: user.role,
+      id: user.dataValues.id,
+      // role: user.role,
     };
 
     return jwt.sign(payload, secret, { // secret으로 sign하여 발급하고 return
@@ -17,6 +20,8 @@ module.exports = {
       expiresIn: '1h', 	  // 유효기간
     });
   },
+
+  
   verify: (token) => { // access token 검증
     let decoded = null;
     try {
@@ -24,7 +29,7 @@ module.exports = {
       return {
         ok: true,
         id: decoded.id,
-        role: decoded.role,
+        // role: decoded.role,
       };
     } catch (err) {
       return {
