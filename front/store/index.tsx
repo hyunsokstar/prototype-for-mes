@@ -4,12 +4,14 @@ import { createWrapper } from "next-redux-wrapper";
 
 import reducer from './reducer';
 
-const makeStore = (context:any) => configureStore({ 
+const store = (context:any) => configureStore({ 
     reducer,
     // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
     // devTools: process.env.NODE_ENV !== 'production',
 });
 
-export const wrapper = createWrapper(makeStore, {
+// export type AppDispatch = typeof store.dispatch
+
+export const wrapper = createWrapper(store, {
     debug: process.env.NODE_ENV !== 'production',
 });

@@ -17,8 +17,10 @@ router.patch("/login", async (req, res, next) => {
         const user = await User.findOne({
             where: { user_id: req.body.username },
         });
+        console.log("user : ", user);
+        let success = user?.password === req.body.password
 
-        let success = user.password === req.body.password
+        console.log("success : ", success);
 
         if (success) {
             console.log("success");
@@ -32,6 +34,7 @@ router.patch("/login", async (req, res, next) => {
 
         res.status(200).json({ // client에게 토큰 모두를 반환합니다.
             ok: true,
+            user_id:req.body.username,
             data: {
                 accessToken,
             },

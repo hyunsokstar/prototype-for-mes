@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducer';
 import HeaderMenu from '../../component/HeaderMenu';
 
+
+
 function WelcomePage() {
   const isLoggedIn = useSelector((state: RootState) => !!state.user.email);
   console.log('isLoggedIn', isLoggedIn);
