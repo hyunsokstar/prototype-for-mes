@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducer';
+import HeaderMenu from '../../component/HeaderMenu';
 
 function WelcomePage() {
   const isLoggedIn = useSelector((state: RootState) => !!state.user.email);
@@ -13,9 +14,12 @@ function WelcomePage() {
 
   return (
     <div>
-      <button onClick={() => {
+
+      <HeaderMenu />
+
+      {/* <button onClick={() => {
         router.push('/mes/login')
-      }} >로그인</button>
+      }} >로그인</button> */}
     </div>
   )
 }
