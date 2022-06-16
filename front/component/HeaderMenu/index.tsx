@@ -7,59 +7,59 @@ import userSlice from '../../slices/user';
 
 
 function HeaderMenu() {
-    
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const dispatch = useDispatch();
-    const isLoggedIn = useSelector((state: RootState) => !!state.user.email);
-    console.log('isLoggedIn', isLoggedIn);
-  
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state: RootState) => !!state.user.email);
+  const email = useSelector((state: RootState) => state.user.email);
+  console.log('email', email);
 
 
-    const loginHandler = async (e: any) => {
-      e.preventDefault();
-  
-      console.log("username : ", username);
-      console.log("password : ", password);
-  
-      // console.log("hi");
-  
-      const result = await axios.patch("http://localhost:3065/users/login", { username, password });
-      console.log("result : ", result);
-  
-      // dispatch(setUser());
-      if(result.data.ok){
-        dispatch(
-          userSlice.actions.setUser({
-            email: result.data.user_id,
-            name: result.data.user_id,
-            accessToken: result.data.data.accessToken,
-          }),
-        );
-      } else {
-        alert("login 실패")
-      }
+
+  const loginHandler = async (e: any) => {
+    e.preventDefault();
+
+    console.log("username : ", username);
+    console.log("password : ", password);
+
+    // console.log("hi");
+
+    const result = await axios.patch("http://localhost:3065/users/login", { username, password });
+    console.log("result : ", result);
+
+    // dispatch(setUser());
+    if (result.data.ok) {
+      dispatch(
+        userSlice.actions.setUser({
+          email: result.data.user_id,
+          name: result.data.user_id,
+          accessToken: result.data.data.accessToken,
+        }),
+      );
+    } else {
+      alert("login 실패")
+    }
 
 
-    };
-  
-  
-    return (
-      <div
-        style={{
-          border: "1px solid black",
-          display: "flex",
-          justifyContent:"flex-end",
-          marginRight: "10px",
-          marginTop: 10,
-          maxWidth: "100%",
-          marginLeft: "auto",
-          // marginRight: "auto",
-        }}
-      >
+  };
 
-        {isLoggedIn ? "로그인": "nologin"} &nbsp;&nbsp;&nbsp;&nbsp;
 
+  return (
+    <div
+      style={{
+        border: "1px solid black",
+        display: "flex",
+        justifyContent: "flex-end",
+        marginRight: "10px",
+        marginTop: 10,
+        maxWidth: "100%",
+        marginLeft: "auto",
+        // marginRight: "auto",
+      }}
+    >
+
+      {isLoggedIn ? email +"님 안녕하세요":
         <form onSubmit={loginHandler}>
           <CustomInput label="회원 id" value={username} setValue={setUsername} />
           <CustomInput
@@ -69,8 +69,12 @@ function HeaderMenu() {
             type="password"
           />
           <button type="submit">로그인</button>
-        </form>
-      </div>)
+        </form>} &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+
+    </div>)
 }
 
 export default HeaderMenu
