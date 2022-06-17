@@ -17,7 +17,7 @@ module.exports = {
       expiresIn: '1h', 	  // 유효기간
     });
   },
-  
+
   verify: (token) => { // access token 검증
     let decoded = null;
     try {
@@ -34,6 +34,25 @@ module.exports = {
       };
     }
   },
+
+  logout: (token) => {
+    try {
+      let decoded = jwt.verify(token, secret);
+
+
+      return {
+        ok: true,
+        id: decoded.id
+      };
+    } catch (err) {
+      return {
+        ok: false,
+        message: err.message
+      }
+    }
+  },
+
+
   refresh: () => { // refresh token 발급
     return jwt.sign({}, secret, { // refresh token은 payload 없이 발급
       algorithm: 'HS256',
@@ -44,7 +63,7 @@ module.exports = {
     /* redis 모듈은 기본적으로 promise를 반환하지 않으므로,
        promisify를 이용하여 promise를 반환하게 해줍니다.*/
     const getAsync = promisify(redisClient.get).bind(redisClient);
-    
+
     try {
       const data = await getAsync(userId); // refresh token 가져오기
       if (token === data) {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CustomInput from "./CustomInput";
 import axios from "axios";
+import { resourceLimits } from "worker_threads";
 
 
 function Login() {
@@ -16,8 +17,15 @@ function Login() {
 
     console.log("hi");
 
-    const result = await axios.patch("http://localhost:3065/users/login", { username, password });
-    console.log("result : ", result);
+    const login_result = await axios.patch("http://localhost:3065/users/login", { username, password });
+    console.log("login result : ", login_result);
+
+    if(login_result.data.ok){
+      alert("토큰 설정 ok")
+      localStorage.setItem('mes-token' , login_result.data.data.accessToken);
+    } else {
+      alert("no anything")
+    }
 
   };
 

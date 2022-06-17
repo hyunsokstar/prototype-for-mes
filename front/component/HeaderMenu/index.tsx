@@ -37,6 +37,9 @@ function HeaderMenu() {
           accessToken: result.data.data.accessToken,
         }),
       );
+
+      localStorage.setItem('mes-token' , result.data.data.accessToken);
+
     } else {
       alert("login 실패")
     }
