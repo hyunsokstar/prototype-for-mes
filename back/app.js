@@ -24,7 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.send("hello express");
 });
-3010
+
+
 // 라우터 로직 분기
 app.use('/post', postRouter);
 app.use('/users', userRouter)

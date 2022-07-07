@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CustomInput from "../../pages/mes/login/CustomInput";
+import LogoutComponent from "../../component/LogOut"
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/reducer';
 import userSlice from '../../slices/user';
@@ -62,7 +63,7 @@ function HeaderMenu() {
       }}
     >
 
-      {isLoggedIn ? email +"님 안녕하세요":
+      {isLoggedIn ? <LogoutComponent /> :
         <form onSubmit={loginHandler}>
           <CustomInput label="회원 id" value={username} setValue={setUsername} />
           <CustomInput
@@ -73,8 +74,6 @@ function HeaderMenu() {
           />
           <button type="submit">로그인</button>
         </form>} &nbsp;&nbsp;&nbsp;&nbsp;
-
-
 
 
     </div>)

@@ -21,7 +21,7 @@ function CustomInput({ label, value, setValue, type = "text" }:IProps) {
           />
         </div>
       );
-
 }
+
 
 export default CustomInput;

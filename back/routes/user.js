@@ -17,6 +17,7 @@ router.patch("/login", async (req, res, next) => {
         const findUser = await User.findOne({
             where: { user_id: req.body.username },
         });
+
         console.log("findUser : ", findUser);
         let success = findUser?.password === req.body.password
 

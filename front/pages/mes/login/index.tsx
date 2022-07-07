@@ -11,10 +11,8 @@ function Login() {
 
   const loginHandler = async (e: any) => {
     e.preventDefault();
-
     console.log("username : ", username);
     console.log("password : ", password);
-
     console.log("hi");
 
     const login_result = await axios.patch("http://localhost:3065/users/login", { username, password });
@@ -40,6 +38,7 @@ function Login() {
       }}
     >
       <h3>Login</h3>
+      1234
       <form onSubmit={loginHandler}>
         <CustomInput label="회원 id" value={username} setValue={setUsername} />
         <CustomInput
